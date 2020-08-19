@@ -1,0 +1,18 @@
+*
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.product 
+{
+    position: relative;
+}
+.price
+
+{
+    background-color: #09c;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-weight: 800;
+    padding:2px 2px ;
+}
