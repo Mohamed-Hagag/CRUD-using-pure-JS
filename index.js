@@ -8,11 +8,11 @@ if (localStorage.getItem("productsData") == null) {
 }
 
 var inps = document.getElementsByClassName("form-control");
-function clearform() {
+const clearform = () => {
   for (var i = 0; i < inps.length; i++) {
     inps[i].value = "";
   }
-}
+};
 
 const validateForm = (name) => {
   const nameRegex = /[A-Za-z]/;
@@ -59,11 +59,7 @@ document.getElementById("add").addEventListener("click", function addProduct() {
     window.alert("Not valid input");
   }
 });
-function deleteProduct(indx) {
-  var deleted = productContainer.splice(indx, 1);
-  localStorage.setItem("productsData", JSON.stringify(productContainer));
-  displayProduct();
-}
+
 function displayProduct() {
   var temp = ``;
   for (var i = 0; i < productContainer.length; i++) {
@@ -91,7 +87,8 @@ function displayProduct() {
   }
   document.getElementById("productRow").innerHTML = temp;
 }
-function searchProduct(term) {
+
+const searchProduct = (term) => {
   var temp = ``;
   for (var i = 0; i < productContainer.length; i++) {
     if (productContainer[i].Name.toLowerCase().includes(term.toLowerCase())) {
@@ -106,9 +103,17 @@ function searchProduct(term) {
     }
   }
   document.getElementById("productRow").innerHTML = temp;
-}
+};
 
-function updateProduct(indx) {
+const deleteProduct = (indx) => {
+  if (window.confirm("Delete the item?")) {
+    var deleted = productContainer.splice(indx, 1);
+    localStorage.setItem("productsData", JSON.stringify(productContainer));
+    displayProduct();
+  }
+};
+
+const updateProduct = (indx) => {
   for (i = 0; i < productContainer.length; i++) {
     if (productContainer[i] == productContainer[indx]) {
       document.getElementById("add").innerText = ` Update`;
@@ -127,4 +132,4 @@ function updateProduct(indx) {
       var updated = productContainer.splice(i, 1);
     }
   }
-}
+};
